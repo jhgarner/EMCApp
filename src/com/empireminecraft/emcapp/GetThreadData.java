@@ -10,15 +10,11 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 public class GetThreadData extends AsyncTask<URL, Integer, String>{
-	private static final int NOT_FOUND = 0;
-	public static final int IN_POST = 1;
-	public static final int DONE = 2;
-	public static final int WAITING = 3;
-	public static final int WAITING_MORE=4;
+
 	@Override
 	protected String doInBackground(URL... selection) {
 		URL section = null;
-		String[] post = null;
+		String post = null;
 		try {
 			section = new URL(selection[0].toString());
 		} catch (MalformedURLException e2) {
@@ -37,21 +33,19 @@ public class GetThreadData extends AsyncTask<URL, Integer, String>{
 		}
 		BufferedReader in = why;
 		
-		int foundStart = NOT_FOUND;
-		int commentNum = 1;
+		int foundStart = 0;
 		char[] postContent = new char[100000];
 		int postSize = 0;
 		try {
 			why = new BufferedReader(
 				new InputStreamReader(section.openStream()));
 		} catch (IOException e1) {
-			post = new String[1];
-			post[0] = "an error has occured";
+			post = null;
+			post = "an error has occured";
 			abort = true;
 			e1.printStackTrace();
 		}
 		if(abort == false){
-			post = new String[20];
 			try {
 				/*---------------------
 				 * 
@@ -61,31 +55,32 @@ public class GetThreadData extends AsyncTask<URL, Integer, String>{
 				 * 
 				 *---------------------
 				 */
-				while ((inputLine = in.readLine()) != null && foundStart != DONE){
+				while ((inputLine = in.readLine()) != null && foundStart != 2){
 					for (int i = 0; i <= (inputLine.length() - 1); i++) {
 						
 				           
-				           if(foundStart == IN_POST || foundStart == WAITING){
+				           if(foundStart == 1 || foundStart == 3){
 				        	   if(inputLine.regionMatches(i, "<div class=\"attribution type\">", 0, 37)){
-				        		   foundStart = WAITING;
+				        		   foundStart = 3;
 				        	   }
 				        	   
 				        		   postSize++;
 				        	   
 		        			   
-		        			   if(inputLine.regionMatches(i, "blockquote", 0, 10) && foundStart != WAITING){
-		        				   foundStart = NOT_FOUND;
+		        			   if(inputLine.regionMatches(i, "blockquote", 0, 10) && foundStart != 3){
+		        				   foundStart = 2;
 		        				  
 		        			   }
-		        			   if(inputLine.regionMatches(i, "blockquote", 0, 10) && foundStart == WAITING){
-		        				   foundStart = WAITING_MORE;
+		        			   if(inputLine.regionMatches(i, "blockquote", 0, 10) && foundStart == 3){
+		        				   foundStart = 4;
 		        				  
 		        			   }
-		        			   if(inputLine.regionMatches(i, "blockquote", 0, 10) && foundStart == WAITING_MORE){
-		        				   foundStart = IN_POST;
-		        				   commentNum++;
+		        			   if(inputLine.regionMatches(i, "blockquote", 0, 10) && foundStart == 4){
+		        				   foundStart = 1;
+		        				  
 		        			   }
 		        			   postContent[postSize] = inputLine.charAt(i);
+		        			   //if(inputLine.regionMatches(i, "<
 					       
 				           }
 				           else if (inputLine.regionMatches(i, "blockquote", 0, 10)) {

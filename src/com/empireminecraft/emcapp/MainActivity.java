@@ -32,13 +32,14 @@ public class MainActivity extends Activity {
 		        android.R.layout.simple_list_item_1, forums);
 		final ListView listView = (ListView) findViewById(R.id.forum_sections);
 		listView.setAdapter(adapter);
+		
 		listView.setOnItemClickListener(new OnItemClickListener(){
 		Context context = getApplicationContext();
         CharSequence text = "Loading...";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
-        
+
 			
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, final int position,
