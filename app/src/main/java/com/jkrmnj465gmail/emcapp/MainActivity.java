@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -25,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
             "See cool builds by players", "Events hosted by your fellow players", "Talk about EMC",
             "Wilderness discussions", "Anything Minecraft related", "Talk about the EMC economy",
             "Businesses, buyers, and sellers", "Kind of like Ebay", "The auction hoster pays a player for an item",
-            "Videos made by community members", "Show your arttistic side", "Show your cool pictures",
+            "Videos made by community members", "Show your artistic side", "Show your cool pictures",
             "Stories by members", "Anything song related", "Gaming discussions", "Anything else"};
 
     @Override
@@ -42,6 +43,13 @@ public class MainActivity extends ActionBarActivity {
         SectionAdapter adapter = new SectionAdapter(names, descriptions);
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getResources().getDrawable(R.drawable.abc_list_divider_mtrl_alpha)));
+        /*mRecyclerView.addOnItemTouchListener(
+                new SectionAdapter.SectionViewHolder(this, new SectionAdapter.SectionViewHolder.MyViewHolderClicks() {
+                    @Override public void onSectionClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );*/
     }
 
 

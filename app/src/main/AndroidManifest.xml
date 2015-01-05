@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jkrmnj465gmail.emcapp" >
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -15,6 +15,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.jkrmnj465gmail.emcapp.ThreadList"
+            android:label="@string/title_activity_thread_list"
+            android:parentActivityName="com.jkrmnj465gmail.emcapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jkrmnj465gmail.emcapp.MainActivity" />
         </activity>
     </application>
 
