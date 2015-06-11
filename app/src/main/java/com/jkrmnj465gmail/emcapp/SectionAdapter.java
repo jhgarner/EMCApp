@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by jack on 11/30/2014.
  */
 public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.SectionViewHolder> {
-    public final static String SECTION = "com.example.myfirstapp.SECTION";
+    public final static String SECTION = "com.jkrmnj465gmail.emcapp.SECTION";
     /*
      * This class has the purpose of making Recycler view useful and using certain mandatory methods.
      * Adapter is in charge of taking raw data (such as a string[]) and sorting it for the Recycler view

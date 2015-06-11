@@ -160,7 +160,6 @@ public class GetThreads extends AsyncTask<URL, Integer, String[][]> {
                 }
                 //This specific index is used to tell other parts of the app how many threads there were.
                 threads[49][0] = Integer.toString(numThread);
-                Log.w("This is frstrating", threads[49][0]);
                 try {
                     in.close();
                 } catch (IOException e) {

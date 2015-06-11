@@ -14,7 +14,7 @@ import android.widget.TextView;
  * Created by jack on 12/6/2014.
  */
 public class ThreadListAdapter extends RecyclerView.Adapter<ThreadListAdapter.SectionViewHolder> {
-    /*public final static String SECTION = "com.example.myfirstapp.SECTION";
+    public final static String POST = "com.jkrmnj465gmail.emcapp.POST";
     /*
      * This class has the purpose of making Recycler view useful and using certain mandatory methods.
      * Adapter is in charge of taking raw data (such as a string[]) and sorting it for the Recycler view
@@ -67,10 +67,10 @@ public class ThreadListAdapter extends RecyclerView.Adapter<ThreadListAdapter.Se
             //Modify this to change click behavior
             public void onSectionClick(View caller, int position) {
                 click = position;
-                /*Intent intent = new Intent(caller.getContext(),ThreadList.class);
-                intent.putExtra(SECTION, click);
+                Intent intent = new Intent(caller.getContext(),PostActivity.class);
+                intent.putExtra(POST, threads[position][0]);
                 caller.getContext().startActivity(intent);
-                Log.e("MAybe", Integer.toString(click));*/
+                Log.e("MAybe", Integer.toString(click));
             }
         });
         return vh;
